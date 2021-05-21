@@ -1,0 +1,289 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  outline-width: 0;
+}
+
+body {
+  margin-top: 88px;
+  font-family: 'Roboto', sans-serif;
+  background-color: black;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 80vh
+}
+
+ul {
+  list-style: none;
+  height: 100%;
+}
+
+.menus {
+  display: inline;
+  font-size: 1.5rem;
+  padding: 15px 30px;
+}
+
+.menus:hover {
+  background-color:#002c6d ;
+}
+
+.sous_menus:hover{
+  background-color: #055a6b;
+}
+
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+}
+
+nav {
+  padding: 15px 0px;
+  display: flex;
+  justify-content:space-between;
+  align-items: center;
+  background-color: #0d6efd;
+}
+
+.connect {
+  display: flex;
+  width: 100%;
+  justify-content: flex-end;
+}
+
+.sous_menus {
+  display: inline;
+  font-size: 1.5rem;
+  padding: 10px 20px;
+  justify-content:space-between;
+  align-items: center;
+  background-color: #0dcaf0;
+}
+
+form {
+  border: 1px solid white;
+  padding: 10px 20px;
+  text-align: center;
+  width: 600px;
+  font-size: 1.5rem;
+}
+
+form>* {
+  margin: 10px;
+  padding: 5px 10px;
+}
+
+textarea,
+select,
+.input {
+  padding: 15px 10px 5px;
+  width: 100%;
+  background-color: white;
+  border: none;
+  font-size: 1.2rem;
+}
+
+.file {
+  padding: 10px 10px 5px 0px;
+  width: 100%;
+  font-size: 1.2rem;
+} 
+
+#avatar-label {
+  color: white;
+}
+
+.avatar {
+  height: 80px;
+  width: 80px;
+  border-radius: 100%;
+  background: transparent no-repeat center;
+  background-size: cover;
+}
+
+textarea {
+  font-family: 'Roboto', sans-serif;
+  resize: none;
+  height: 110px;
+  width: 470px;
+  padding-right: 100px;
+  padding-top: 40px;
+}
+
+select {
+  width: 580px;
+}
+
+.form-container {
+  position: relative;
+  text-align: right;
+}
+
+label {
+  color: black;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  right: 10px;
+  cursor: text;
+}
+
+.checkoss {
+  border: 1px solid white;
+  margin-left: 20px;
+  padding-right: 60px;
+  width: 508px;
+  display: inline-flex;
+  /* justify-content: center;
+  align-items: right; */
+  overflow: auto;
+  height: 150px;
+}
+
+.checkoss label {
+  transform: unset;
+  top: unset;
+  right: unset;
+}
+
+.checkoss>label {
+  right: 10px;
+}
+
+.checkcheck {
+  width: 100%;
+  padding: 10px 5px;
+  display: flex;
+  flex-wrap: wrap;
+  align-content: flex-start;
+  justify-content: flex-start;
+}
+
+.checkbox_option>* {
+  padding: 0 10px;
+}
+
+.checkbox_option>label {
+  position: unset;
+}
+
+.checkbox_option {
+  padding: 3px 6px;
+  display: inline;
+  height: 40px;
+}
+
+.checkbox_option>*,
+.checkoss>* {
+  color: white;
+}
+
+#textarea_label {
+  top: 30px;
+}
+
+input[type="submit"]{
+  cursor: pointer;
+  font-size: 2rem;
+  padding: 10px 20px;
+  width: unset;
+  background-color: #0d6efd;
+  color: white;
+  border: none;
+}
+
+.alert-container {
+  font-size: 1.5rem;
+  display: block;
+}
+
+.error {
+  background-color: #dc3545;
+  padding: 20px 40px;
+}
+
+.info {
+  background-color: #0d6efd;
+  padding: 20px 40px;
+  font-size: 2rem;
+}
+
+.success {
+  background-color: #198754;
+  padding: 20px 40px;
+}
+
+.alert-container form {
+  border: none;
+  padding: 0;
+  margin: auto;
+  text-align: center;
+  width: 600px;
+  font-size: 1.5rem;
+}
+
+.alert-container form>* {
+  background-color: #dc3545;
+}
+
+button {
+  background-color: #0d6efd;
+  color: white;
+  border: none;
+  padding: 20px 40px;
+  font-size: 1.8rem;
+}
+
+a {
+  color: white;
+  text-decoration: none;
+}
+
+main {
+  display: block;
+  text-align: center;
+}
+
+table {
+  text-align: center;
+  background-color: white;
+}
+
+thead {
+  background-color: #0d6efd;
+}
+
+tbody {
+  background-color: #002c6d;
+}
+
+td,
+th {
+  padding: 5px 10px;
+  max-width: 500px;
+}
+
+table button {
+  font-size: 1rem;
+  padding: 10px 20px;
+  color: white;
+}
+
+.modif {
+  background-color: #0d6efd;
+}
+
+.suppr button,
+.suppr {
+  background-color: #dc3545;
+}
+
+#table_article>tbody>tr>td:nth-of-type(3) {
+  text-align: left;
+}
