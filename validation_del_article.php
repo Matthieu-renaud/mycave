@@ -12,32 +12,18 @@
 <header>
     <nav>
       <ul class="group_menus">
-        <li class="menus"><a href="./index.php">Accueil</a></li>
+        <li class="menus"><a href="./index.php">MyCave</a></li>
       </ul>
       <ul class="group_menus">
-        <li class="menus"><a href="./aff_article.php">Articles</a></li>
+        <li class="menus"><a href="./aff_article.php">Vins</a></li>
         <li class="menus"><a href="./ajout_article.php">Ajout</a></li>
       </ul>
       <ul class="group_menus">
-        <li class="menus"><a href="./aff_category.php">Catégories</a></li>
-        <li class="menus"><a href="./ajout_category.php">Ajout</a></li>
-      </ul>
-      <ul class="group_menus">
-        <li class="menus"><a href="./aff_tag.php">Tags</a></li>
-        <li class="menus"><a href="./ajout_tag.php">Ajout</a></li>
-      </ul>
-      <ul class="group_menus">
-        <li class="menus"><a href="./aff_user.php">Utilisateurs</a></li>
-        <li class="menus"><a href="./ajout_user.php">Inscription</a></li>
+        <li class="menus btn_co"><a href="./connexion.php">Connexion</a></li>
+        <li class="menus btn_deco"><a href="./deconnexion.php">Déconnexion</a></li>
       </ul>
     </nav>
-    <div class="coco">
-      <ul class="connect">
-        <li class="sous_menus btn_co"><a href="./connexion.php">Connexion</a></li>
-        <li class="sous_menus btn_deco"><a href="./deconnexion.php">Déconnexion</a></li>
-      </ul>
-    </div>
-  </header>
+</header>
   
   <main>
     <div class="alert-container">

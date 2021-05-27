@@ -29,26 +29,32 @@
   
   <?php
 
-  $id = htmlspecialchars($_POST['id']);
+  $id = htmlspecialchars(strip_tags($_POST['id']));
   $mdp = htmlspecialchars($_POST['mdp']);
 
   if(strlen($id)>4 && strlen($mdp)>6) {
-    $mdpHash = password_hash($mdp, PASSWORD_DEFAULT);
-    // $mdpHash = '$2y$10$GQYaYvxNvoW83bYb0rvOsuv.Y3pYqzXJMwc0QfXImOWyKo4aiLpmm';
-
-    var_dump('$2y$10$GQYaYvxNvoW83bYb0rvOsuv.Y3pYqzXJMwc0QfXImOWyKo4aiLpmm');
-    var_dump($mdpHash);
-    
+        
     $req = new PDO('mysql:host=localhost;dbname=mycave', 'root', '');
-    $sth = $req->prepare('SELECT identifiant FROM users WHERE identifiant=:id AND mdp=:pwd');
+    $sth = $req->prepare('SELECT mdp FROM users WHERE identifiant=:id');
     
     $sth->execute(array(
-      'id' => strip_tags($id),
-      'pwd' => strip_tags($mdpHash),
+      'id' => $id
     ));
 
-    $resultat = $sth->fetchAll();
-    var_dump($resultat);
+    $result = $sth->fetchAll();
+
+    if (!empty($result)){
+    if (password_verify($mdp,$result[0]['mdp'])) {
+      session_start();
+      $_SESSION['id'] = $id;
+      echo "<h2 class=\"success\">Bonjour ".$_SESSION['id']."</h2>";
+    } else {
+      echo "<h2 class=\"error\">Erreur sur l'identifiant ou le mot de passe</h2>";
+    }
+  } else {
+    echo "<h2 class=\"error\">Erreur sur l'identifiant ou le mot de passe</h2>";
+  }
+
 
     
   } else {

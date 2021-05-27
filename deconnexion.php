@@ -29,6 +29,12 @@
 
 <div class="info">Vous êtes déconnecté.</div>
 
+<?php 
+
+session_destroy();
+
+?>
+
 </main>
 
 

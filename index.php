@@ -30,7 +30,9 @@
 
   <main>
 
-    <div class="info">Bonjour,<br>Bienvenue sur MyCave,<br> Un site créé par un expert en œnologie afin de réferencer uniquement la crème de la crème du vin.</div>
+    
+
+    <div class="info">Bonjour <?php if(isset($_SESSION['id'])){echo $_SESSION['id'];} else {'cc';} ?>,<br>Bienvenue sur MyCave,<br> Un site créé par un expert en œnologie afin de réferencer uniquement la crème de la crème du vin.</div>
 
   </main>
 
