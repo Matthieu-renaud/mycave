@@ -27,14 +27,11 @@ ul {
   font-size: 1.5rem;
   padding: 15px 30px;
 }
-
+.btn:hover,
 .menus:hover {
-  background-color:#002c6d ;
+  background-color:#00388b ;
 }
 
-.sous_menus:hover{
-  background-color: #055a6b;
-}
 
 header {
   position: fixed;
@@ -57,14 +54,6 @@ nav {
   justify-content: flex-end;
 }
 
-.sous_menus {
-  display: inline;
-  font-size: 1.5rem;
-  padding: 10px 20px;
-  justify-content:space-between;
-  align-items: center;
-  background-color: #0dcaf0;
-}
 
 form {
   border: 1px solid white;
@@ -140,8 +129,6 @@ label {
   padding-right: 60px;
   width: 508px;
   display: inline-flex;
-  /* justify-content: center;
-  align-items: right; */
   overflow: auto;
   height: 150px;
 }
