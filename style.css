@@ -28,12 +28,9 @@ ul {
   padding: 15px 30px;
 }
 
+.btn:hover,
 .menus:hover {
   background-color:#002c6d ;
-}
-
-.sous_menus:hover{
-  background-color: #055a6b;
 }
 
 header {
@@ -57,14 +54,6 @@ nav {
   justify-content: flex-end;
 }
 
-.sous_menus {
-  display: inline;
-  font-size: 1.5rem;
-  padding: 10px 20px;
-  justify-content:space-between;
-  align-items: center;
-  background-color: #0dcaf0;
-}
 
 form {
   border: 1px solid white;

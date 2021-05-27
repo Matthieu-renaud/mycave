@@ -21,6 +21,7 @@
         <li class="menus"><a href="./ajout_article.php">Ajout</a></li>
       </ul>
       <ul class="group_menus">
+        <li class="menus btn_co"><a href="./ajout_user.php">Inscription</a></li>
         <li class="menus btn_co"><a href="./connexion.php">Connexion</a></li>
         <li class="menus btn_deco"><a href="./deconnexion.php">Déconnexion</a></li>
       </ul>
@@ -30,7 +31,7 @@
 
   <main>
 
-    <div class="info">Bonjour,<br>Bienvenue sur MyCave, un site créé par un expert en œnologie afin de réferencer uniquement la crème de la crème du vin.</div>
+    <div class="info">Bonjour,<br>Bienvenue sur MyCave,<br> Un site créé par un expert en œnologie afin de réferencer uniquement la crème de la crème du vin.</div>
 
   </main>
 

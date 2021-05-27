@@ -41,24 +41,11 @@
     </div>
   </header>
 
-  <!-- <form action="./validation_ajout_user.php" method="post" enctype="multipart/form-data"> -->
-  <form>
-    <h1>Ce n'est pas un formulaire, c'est une inscription,<br> je valide et je patiente</h1>
+  <form action="./validation_ajout_user.php" method="post">
+    <h1>Inscription</h1>
     <div class="form-container">
-      <label for="prenom">Prénom</label>
-      <input class="input" type="text" name="prenom" id="prenom">
-    </div>
-    <div class="form-container">
-      <label for="nom">Nom</label>
-      <input class="input" type="text" name="nom" id="nom">
-    </div>
-    <div class="form-container">
-      <label for="pseudo">Pseudo</label>
-      <input class="input" type="text" name="pseudo" id="pseudo">
-    </div>
-    <div class="form-container">
-      <label for="email">Email</label>
-      <input class="input" type="email" name="email" id="email">
+      <label for="id">ID</label>
+      <input class="input" type="text" name="id" id="id">
     </div>
     <div class="form-container">
       <label for="mdp">Mot de passe</label>
@@ -68,12 +55,8 @@
       <label for="confmdp">Confirmez votre mot de passe</label>
       <input class="input" type="password" name="confmdp" id="confmdp">
     </div>
-    <div class="form-container">
-      <label for="fichier" id="avatar-label">Avatar</label>
-      <input class="file" id="fichier" name="fichier" type="file" accept="image/png, image/jpeg">
-    </div>
     <input type="hidden" name="MAX_FILE_SIZE" value="30000" />
-    <input class="btn" type="submit" value="Validation avec Inscription">
+    <input class="btn" type="submit" value="Valider">
   </form>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"
