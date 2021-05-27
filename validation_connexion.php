@@ -32,29 +32,28 @@
   $id = htmlspecialchars($_POST['id']);
   $mdp = htmlspecialchars($_POST['mdp']);
 
-
-
-
-
   if(strlen($id)>4 && strlen($mdp)>6) {
     $mdpHash = password_hash($mdp, PASSWORD_DEFAULT);
+    // $mdpHash = '$2y$10$GQYaYvxNvoW83bYb0rvOsuv.Y3pYqzXJMwc0QfXImOWyKo4aiLpmm';
+
+    var_dump('$2y$10$GQYaYvxNvoW83bYb0rvOsuv.Y3pYqzXJMwc0QfXImOWyKo4aiLpmm');
+    var_dump($mdpHash);
     
-    $req = new PDO('mysql:host=localhost;dbname=my_blog', 'root', '');
-    $sth = $req->prepare('INSERT INTO users (firstname, lastname, pseudo, mdp,  email, avatar) VALUES(:firstname, :lastname, :nickname, :pwd, :email, :avatar)');
+    $req = new PDO('mysql:host=localhost;dbname=mycave', 'root', '');
+    $sth = $req->prepare('SELECT identifiant FROM users WHERE identifiant=:id AND mdp=:pwd');
     
     $sth->execute(array(
-      'firstname' => strip_tags($prenom),
-      'lastname' => strip_tags($nom),
-      'nickname' => strip_tags($pseudo),
+      'id' => strip_tags($id),
       'pwd' => strip_tags($mdpHash),
-      'email' => strip_tags($email),
-      'avatar' => strip_tags($uploadfile)
     ));
+
+    $resultat = $sth->fetchAll();
+    var_dump($resultat);
+
     
   } else {
     echo "<h2 class=\"error\">Erreur sur l'identifiant ou le mot de passe</h2>";
   }
-
 
   ?>
       

@@ -21,7 +21,6 @@
         <li class="menus"><a href="./ajout_article.php">Ajout</a></li>
       </ul>
       <ul class="group_menus">
-        <li class="menus btn_co"><a href="./ajout_user.php">Inscription</a></li>
         <li class="menus btn_co"><a href="./connexion.php">Connexion</a></li>
         <li class="menus btn_deco"><a href="./deconnexion.php">Déconnexion</a></li>
       </ul>
