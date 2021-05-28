@@ -71,7 +71,7 @@
 
     if($nomBool && $contenuBool && $categoryBool) {
       
-      $req = new PDO('mysql:host=localhost;dbname=my_blog', 'root', '');
+      $req = new PDO('mysql:host=localhost;dbname=mycave', 'root', '');
       $sth = $req->prepare('UPDATE article SET name = :name, contenu_article = :contenu, category_id = :category WHERE id=:id');
       
       $sth->execute(array(

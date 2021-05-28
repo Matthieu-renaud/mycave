@@ -69,7 +69,7 @@
 
     if($nomBool && $contenuBool && $categoryBool) {
       
-      $req = new PDO('mysql:host=localhost;dbname=my_blog', 'root', '');
+      $req = new PDO('mysql:host=localhost;dbname=mycave', 'root', '');
       $sth = $req->prepare('INSERT INTO article (name, contenu_article, category_id) VALUES(:name, :contenu, :category)');
       
       $sth->execute(array(
@@ -94,7 +94,7 @@
       }
 
       
-      $req = new PDO('mysql:host=localhost;dbname=my_blog', 'root', '');
+      $req = new PDO('mysql:host=localhost;dbname=mycave', 'root', '');
       $cmd = $req->prepare('SELECT name, id, CONCAT(name, id) FROM tag');
       $appel = $req->prepare('SELECT count(*) FROM tag');
       

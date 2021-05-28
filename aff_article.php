@@ -50,7 +50,7 @@
 
       <?php
 
-      $req = new PDO('mysql:host=localhost;dbname=my_blog', 'root', '');
+      $req = new PDO('mysql:host=localhost;dbname=mycave', 'root', '');
       
       $stmt = $req->prepare("SELECT article.id, article.name, article.contenu_article, category.name AS category, GROUP_CONCAT(tag.name SEPARATOR \", \") AS tag FROM article
       LEFT JOIN category ON article.category_id = category.id

@@ -57,7 +57,7 @@
           
           $id = htmlspecialchars($_GET['id']);
 
-          $req = new PDO('mysql:host=localhost;dbname=my_blog', 'root', '');
+          $req = new PDO('mysql:host=localhost;dbname=mycave', 'root', '');
           
           $stmt = $req->prepare("SELECT  article.id, article.name, article.contenu_article, category.name, category.id AS categz FROM article LEFT JOIN category ON article.category_id = category.id WHERE article.id=:id ");
           $stmt->execute(array(

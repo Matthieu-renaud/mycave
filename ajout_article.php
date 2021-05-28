@@ -49,7 +49,7 @@
       <select id="category" name="category">
         <?php
         
-        $req = new PDO('mysql:host=localhost;dbname=my_blog', 'root', '');
+        $req = new PDO('mysql:host=localhost;dbname=mycave', 'root', '');
       
         $stmt = $req->prepare("SELECT name, id FROM category ORDER BY name");
         $stmt->execute();
@@ -84,7 +84,7 @@
             return $chaine; 
             }
           
-          $req = new PDO('mysql:host=localhost;dbname=my_blog', 'root', '');
+            $req = new PDO('mysql:host=localhost;dbname=mycave', 'root', '');
         
           $stmt = $req->prepare("SELECT name, CONCAT(name, id) AS real_id FROM tag ORDER BY name");
           $stmt->execute();

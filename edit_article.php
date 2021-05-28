@@ -38,7 +38,7 @@
   
   $id = htmlspecialchars($_GET['id']);
 
-  $req = new PDO('mysql:host=localhost;dbname=my_blog', 'root', '');
+  $req = new PDO('mysql:host=localhost;dbname=mycave', 'root', '');
         
   $stmt = $req->prepare("SELECT name, contenu_article, category_id FROM article WHERE id=:id");
   $stmt->execute(array(
@@ -64,7 +64,7 @@
       <select id="category" name="category">
         <?php
         
-        $req = new PDO('mysql:host=localhost;dbname=my_blog', 'root', '');
+        $req = new PDO('mysql:host=localhost;dbname=mycave', 'root', '');
       
         $stmt = $req->prepare("SELECT name, id FROM category ORDER BY name");
         $stmt->execute();

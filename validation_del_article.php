@@ -43,7 +43,7 @@
 
       echo "<h2 class=\"success\">Suppression réussie</h2>";
       
-      $req = new PDO('mysql:host=localhost;dbname=my_blog', 'root', '');
+      $req = new PDO('mysql:host=localhost;dbname=mycave', 'root', '');
       $sth = $req->prepare('DELETE FROM article WHERE id=:id');
 
       $sth->execute(array(
