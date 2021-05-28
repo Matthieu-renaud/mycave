@@ -54,7 +54,6 @@ nav {
   justify-content: flex-end;
 }
 
-
 form {
   border: 1px solid white;
   padding: 10px 20px;
@@ -88,9 +87,26 @@ select,
   color: white;
 }
 
-.avatar {
+.picture {
   height: 80px;
   width: 80px;
+  border-radius: 100%;
+  background: transparent no-repeat center;
+  background-size: cover;
+}
+
+.card-container {
+  margin: auto;
+}
+
+.card {
+  display: inline;
+  margin: 50px 0;
+}
+
+.card-picture{
+  height: 400px;
+  width: 400px;
   border-radius: 100%;
   background: transparent no-repeat center;
   background-size: cover;
@@ -121,56 +137,6 @@ label {
   transform: translateY(-50%);
   right: 10px;
   cursor: text;
-}
-
-.checkoss {
-  border: 1px solid white;
-  margin-left: 20px;
-  padding-right: 60px;
-  width: 508px;
-  display: inline-flex;
-  /* justify-content: center;
-  align-items: right; */
-  overflow: auto;
-  height: 150px;
-}
-
-.checkoss label {
-  transform: unset;
-  top: unset;
-  right: unset;
-}
-
-.checkoss>label {
-  right: 10px;
-}
-
-.checkcheck {
-  width: 100%;
-  padding: 10px 5px;
-  display: flex;
-  flex-wrap: wrap;
-  align-content: flex-start;
-  justify-content: flex-start;
-}
-
-.checkbox_option>* {
-  padding: 0 10px;
-}
-
-.checkbox_option>label {
-  position: unset;
-}
-
-.checkbox_option {
-  padding: 3px 6px;
-  display: inline;
-  height: 40px;
-}
-
-.checkbox_option>*,
-.checkoss>* {
-  color: white;
 }
 
 #textarea_label {

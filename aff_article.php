@@ -37,13 +37,19 @@
   <table id="table_article">
     <thead>
       <tr>
-        <th>ID</th>
         <th>Nom</th>
-        <th>Contenu</th>
-        <th>Catégorie</th>
-        <th>Tag</th>
-        <th class="modif">Modification</th>
-        <th class="suppr">Suppression</th>
+        <th>Année</th>
+        <th>Cépages</th>
+        <th>Pays</th>
+        <th>Région</th>
+        <th>Description</th>
+        <th>Image</th>
+        <?php 
+        if (isset($_SESSION['id'])) {
+        echo '<th class="modif">Modification</th>';
+        echo '<th class="suppr">Suppression</th>';
+        }
+      ?>
       </tr>
     </thead>
     <tbody>
@@ -52,23 +58,21 @@
 
       $req = new PDO('mysql:host=localhost;dbname=mycave', 'root', '');
       
-      $stmt = $req->prepare("SELECT article.id, article.name, article.contenu_article, category.name AS category, GROUP_CONCAT(tag.name SEPARATOR \", \") AS tag FROM article
-      LEFT JOIN category ON article.category_id = category.id
-      LEFT JOIN article_tags ON article.id = article_tags.article_id
-      LEFT JOIN tag ON tag.id = article_tags.tag_id
-      GROUP BY article.id
-      ORDER BY article.id");
+      $stmt = $req->prepare("SELECT articles.name, articles.year, articles.grapes, articles.country, articles.region, articles.description, articles.picture FROM articles
+      ORDER BY id");
       $stmt->execute();
       
       $resultat = $stmt->fetchAll();
 
       for ($i=0; $i < count($resultat); $i++) { 
         echo "<tr>";
-        for ($j=0; $j < count($resultat[$i])/2; $j++) { 
+        for ($j=0; $j < count($resultat[$i])/2 -1 ; $j++) { 
           echo "<td>{$resultat[$i][$j]}</td>";
         }
-        print_r("<td class=\"modif\"><button id=\"modif{.$i}\"><a href=\"./edit_article.php?id={$resultat[$i][0]}\">Modifier</a></button></td>");
-        print_r("<td class=\"suppr\"><button id=\"suppr{.$i}\"><a href=\"./del_article.php?id={$resultat[$i][0]}\">Supprimer</a></button></td>");
+        $picture = (!$resultat[$i]['picture']) ? 'vide' : $resultat[$i]['picture'];
+        echo "<td><div class=\"picture\" style=\"background-image: url($picture)\"></div></td>";
+        echo "<td class=\"modif\"><button id=\"modif{.$i}\"><a href=\"./edit_article.php?id={$resultat[$i][0]}\">Modifier</a></button></td>";
+        echo "<td class=\"suppr\"><button id=\"suppr{.$i}\"><a href=\"./del_article.php?id={$resultat[$i][0]}\">Supprimer</a></button></td>";
         echo "</tr>";
       }
       
