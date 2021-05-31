@@ -96,17 +96,49 @@ select,
 }
 
 .card-container {
+  width: 90%;
   margin: auto;
 }
 
 .card {
-  display: inline;
+  display: inline-flex;
   margin: 50px 0;
+  padding: 50px 100px 50px 50px;
+  flex-wrap: nowrap;
+  align-content: center;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  flex-direction: row-reverse ;
+  border: 1px solid white;
+}
+
+.card-component:first-child {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  height: 400px;
+}
+
+.card-component-component:first-child {
+  display: flex;
+  flex-direction: column;
+  height: 300px;
+  justify-content: space-evenly;
+}
+
+.card-component-component:last-child {
+  display: inline-flex;
+}
+
+.card-name {
+  font-size: 1.5rem;
 }
 
 .card-picture{
   height: 400px;
-  width: 400px;
+  width: 300px;
   border-radius: 100%;
   background: transparent no-repeat center;
   background-size: cover;

@@ -34,26 +34,9 @@
     </nav>
 </header>
 
-  <table id="table_article">
-    <thead>
-      <tr>
-        <th>Nom</th>
-        <th>Année</th>
-        <th>Cépages</th>
-        <th>Pays</th>
-        <th>Région</th>
-        <th>Description</th>
-        <th>Image</th>
-        <?php 
-        if (isset($_SESSION['id'])) {
-        echo '<th class="modif">Modification</th>';
-        echo '<th class="suppr">Suppression</th>';
-        }
-      ?>
-      </tr>
-    </thead>
-    <tbody>
+<main>
 
+<section class="card-container">
       <?php
 
       $req = new PDO('mysql:host=localhost;dbname=mycave', 'root', '');
@@ -65,21 +48,24 @@
       $resultat = $stmt->fetchAll();
 
       for ($i=0; $i < count($resultat); $i++) { 
-        echo "<tr>";
-        for ($j=0; $j < count($resultat[$i])/2 -1 ; $j++) { 
-          echo "<td>{$resultat[$i][$j]}</td>";
-        }
+        echo "<div class='card'>";
+        echo "<div class='card-component'><div class='card-component-component'><h3 class='card-name'>{$resultat[$i]['name']}</h3>";
+        echo "<h3 class='card-year'><em>{$resultat[$i]['year']}</em></h3>";
+        echo "<h3 class='card-grapes'>{$resultat[$i]['grapes']}</h3>";
+        echo "<h3 class='card-region'>{$resultat[$i]['region']}, {$resultat[$i]['country']}</h3>";
+        echo "<h3 class='card-description'>{$resultat[$i]['description']}</h3></div>";
+        echo "<div class='card-component-component'><div class=\"modif\"><button id=\"modif{.$i}\"><a href=\"./edit_article.php?id={$resultat[$i][0]}\">Modifier</a></button></div>";
+        echo "<div class=\"suppr\"><button id=\"suppr{.$i}\"><a href=\"./del_article.php?id={$resultat[$i][0]}\">Supprimer</a></button></div></div></div>";
         $picture = (!$resultat[$i]['picture']) ? 'vide' : $resultat[$i]['picture'];
-        echo "<td><div class=\"picture\" style=\"background-image: url($picture)\"></div></td>";
-        echo "<td class=\"modif\"><button id=\"modif{.$i}\"><a href=\"./edit_article.php?id={$resultat[$i][0]}\">Modifier</a></button></td>";
-        echo "<td class=\"suppr\"><button id=\"suppr{.$i}\"><a href=\"./del_article.php?id={$resultat[$i][0]}\">Supprimer</a></button></td>";
-        echo "</tr>";
+        echo "<div class='card-component'><div class=\"card-picture\" style=\"background-image: url($picture)\"></div></div>";
+        echo "</div>";
       }
       
       ?>
 
-    </tbody>
-  </table>
+</section>
+
+</main>
 
 </body>
 </html>

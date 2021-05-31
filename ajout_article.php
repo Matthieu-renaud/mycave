@@ -35,72 +35,37 @@
 </header>
 
   <form action="./validation_ajout_article.php" method="post">
-    <h1>Ce n'est pas un formulaire, c'est une création d'article,<br> je valide et je m'applique</h1>
+    <h1>Ajout d'article</h1>
     <div class="form-container">
       <label for="nom">Nom</label>
       <input class="input" type="text" name="nom" id="nom">
     </div>
-    <div class="form-container">
-        <label id="textarea_label" for="contenu">Contenu</label>
-        <textarea name="contenu" id="contenu" ></textarea>
-      </div>
-    <div class="form-container">
-      <label for="category">Catégorie</label>
-      <select id="category" name="category">
-        <?php
-        
-        $req = new PDO('mysql:host=localhost;dbname=mycave', 'root', '');
-      
-        $stmt = $req->prepare("SELECT name, id FROM category ORDER BY name");
-        $stmt->execute();
-        
-        $resultat = $stmt->fetchAll();
 
-        for ($i=0; $i < count($resultat); $i++) { 
-          echo "<option "; 
-          if ($resultat[$i]['name'] == "Autre")
-          echo "selected ";
-          echo "value=\"{$resultat[$i][1]}\">{$resultat[$i][0]}</option>";
-        }
-        
-        ?>
-      </select>
+    <div class="form-container">
+      <label for="year">Année</label>
+      <input type="number" name="year" id="year" min="1950" max="<?php echo date('Y') ?>">
     </div>
-      <div class="form-container checkoss">
-        <label for="nom">Tag</label>
-        <div class="checkcheck">
-          
-          <?php
-          function string2url($chaine) { 
-            $chaine = trim($chaine); 
-            $chaine = strtr($chaine, 
-            "ÀÁÂÃÄÅàáâãäåÒÓÔÕÖØòóôõöøÈÉÊËèéêëÇçÌÍÎÏìíîïÙÚÛÜùúûüÿÑñ", 
-            "aaaaaaaaaaaaooooooooooooeeeeeeeecciiiiiiiiuuuuuuuuynn"); 
-            $chaine = lcfirst(ucwords($chaine));
-            $chaine = preg_replace('#([^.a-z0-9]+)#i', '', $chaine); 
-                    $chaine = preg_replace('#-{2,}#','',$chaine); 
-                    $chaine = preg_replace('#-$#','',$chaine); 
-                    $chaine = preg_replace('#^-#','',$chaine); 
-            return $chaine; 
-            }
-          
-            $req = new PDO('mysql:host=localhost;dbname=mycave', 'root', '');
-        
-          $stmt = $req->prepare("SELECT name, CONCAT(name, id) AS real_id FROM tag ORDER BY name");
-          $stmt->execute();
-          
-          $res = $stmt->fetchAll();
-          
-          for ($i=0; $i < count($res); $i++) {
-            $nom = string2url($res[$i][0]);
-            $id = string2url($res[$i][1]);
-            echo "<div class=\"checkbox_option\"><input type=\"checkbox\" name=\"{$id}\" id=\"{$id}\">";
-            echo "<label for=\"{$id}\">{$res[$i][0]}</label></div>";
-          }
-          ?>
 
-        </div>
-      </div>
+    <div class="form-container">
+      <label for="grapes">Cépages</label>
+      <input type="text" name="grapes" id="grapes">
+    </div>
+
+    <div class="form-container">
+      <label for="region">Région</label>
+      <input type="text" name="region" id="region">
+    </div>
+    
+    <div class="form-container">
+      <label for="country">Pays</label>
+      <input type="text" name="country" id="country">
+    </div>
+    
+    <div class="form-container">
+      <label id="textarea_label" for="description">Description</label>
+      <textarea name="description" id="description" ></textarea>
+    </div>
+
     <input type="submit" value="Validation avec Création d'Article">
   </form>
 
