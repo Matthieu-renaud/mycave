@@ -34,6 +34,16 @@
     </nav>
 </header>
 
+<main>
+  <?php 
+        if (!isset($_SESSION['id'])) {
+          echo "  <div class='alert-container'>";
+          echo "<h2 class=\"error\">Accès refusé, vous n'avez pas les droits</h2>";
+          echo "<button><a href='./index.php'>Retour à l'accueil</a></button></div>";
+        } else {
+
+  ?>
+
   <form action="./validation_ajout_article.php" method="post" enctype="multipart/form-data">
     <h1>Ajout d'article</h1>
     <div class="form-container">
@@ -74,6 +84,9 @@
 
     <input type="submit" value="Valider">
   </form>
+
+  <?php } ?>
+</main>
 
 </body>
 </html>

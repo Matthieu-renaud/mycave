@@ -34,7 +34,16 @@
     </nav>
 </header>
 
-  <main>
+<main>
+<?php 
+        if (!isset($_SESSION['id'])) {
+          echo "  <div class='alert-container'>";
+          echo "<h2 class=\"error\">Accès refusé, vous n'avez pas les droits</h2>";
+          echo "<button><a href='./index.php'>Retour à l'accueil</a></button></div>";
+        } else {
+
+  ?>
+
     <div class="alert-container">
       
       <?php
@@ -54,6 +63,8 @@
 
     </div>
     <button><a href="./index.php">Retour à l'accueil</a></button>
+    
+    <?php } ?>
   </main>
 
 </body>

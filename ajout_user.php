@@ -36,6 +36,16 @@
     </nav>
 </header>
 
+<main>
+<?php 
+        if (!isset($_SESSION['id'])) {
+          echo "  <div class='alert-container'>";
+          echo "<h2 class=\"error\">Accès refusé, vous n'avez pas les droits</h2>";
+          echo "<button><a href='./index.php'>Retour à l'accueil</a></button></div>";
+        } else {
+
+  ?>
+
   <form action="./validation_ajout_user.php" method="post">
     <h1>Inscription</h1>
     <div class="form-container">
@@ -54,10 +64,9 @@
     <input class="btn" type="submit" value="Valider">
   </form>
 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"
-    integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ=="
-    crossorigin="anonymous"></script>
-  <script src="./inscription.js"></script>
+  <?php } ?>
+</main>
+
 </body>
 
 </html>
