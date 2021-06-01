@@ -37,53 +37,43 @@
   <main>
     <div class="alert-container">
       
-      <div class="info">Vous avez sélectionné cette ligne :</div>
+      <div class="info">Vous avez sélectionné cette bouteille :</div>
       
       <br>
 
-      <table id="table_article">
-        <thead>
-          <tr>
-            <th>ID</th>
-            <th>Nom</th>
-            <th>Contenu</th>
-            <th>Catégorie</th>
-            <th>ID Catégorie</th>
-          </tr>
-        </thead>
-        <tbody>
+      <?php
+      
+      $id = htmlspecialchars($_GET['id']);
 
-          <?php
-          
-          $id = htmlspecialchars($_GET['id']);
-
-          $req = new PDO('mysql:host=localhost;dbname=mycave', 'root', '');
-          
-          $stmt = $req->prepare("SELECT  article.id, article.name, article.contenu_article, category.name, category.id AS categz FROM article LEFT JOIN category ON article.category_id = category.id WHERE article.id=:id ");
-          $stmt->execute(array(
-            'id' => $id
-          ));
-          
-          $resultat = $stmt->fetchAll();
-
-          for ($i=0; $i < count($resultat); $i++) { 
-            echo "<tr>";
-            for ($j=0; $j < count($resultat[$i])/2; $j++) { 
-              echo "<td>{$resultat[$i][$j]}</td>";
-            }
-            echo "</tr>";
-          }
-          
-          ?>
-
-        </tbody>
-      </table>
+      $req = new PDO('mysql:host=localhost;dbname=mycave', 'root', '');
+            
+      $stmt = $req->prepare("SELECT name, articles.year, grapes, country, region, description, picture FROM articles WHERE id=:id");
+      $stmt->execute(array(
+        'id' => $id
+      ));
+    
+      $resultat = $stmt->fetchAll();
+    
+      
+      for ($i=0; $i < count($resultat); $i++) { 
+        echo "<div class='card'>";
+        echo "<div class='card-component'><div class='card-component-component'><h3 class='card-name'>{$resultat[$i]['name']}</h3>";
+        echo "<h3 class='card-year'><em>{$resultat[$i]['year']}</em></h3>";
+        echo "<h3 class='card-grapes'>{$resultat[$i]['grapes']}</h3>";
+        echo "<h3 class='card-region'>{$resultat[$i]['region']}, {$resultat[$i]['country']}</h3>";
+        echo "<h3 class='card-description'>{$resultat[$i]['description']}</h3></div>";
+        echo "<div/>";
+        $picture = (!$resultat[$i]['picture']) ? 'vide' : $resultat[$i]['picture'];
+        echo "<div class='card-component'><div class=\"card-picture\" style=\"background-image: url($picture)\"></div></div>";
+        echo "</div>";
+      }
+      ?>
 
       <br>
 
       <form action="./validation_del_article.php" method="post">
           <input type="hidden" name="id" id="id" value="<?php echo $id ?>">
-          <input type="submit" value="Valider la Suppression">
+          <input type="submit" value="Supprimer">
       </form>
 
     </div>

@@ -46,6 +46,11 @@
     ?>
     <br>Bienvenue sur MyCave,<br> Un site créé par un expert en œnologie afin de réferencer uniquement la crème de la crème du vin.</div>
 
+    <br><br>
+
+    <div class="info" id="new-bottle">
+      <h2>Dernière bouteille ajoutée</h2>
+    </div>
 
     <section class="card-container">
 
@@ -53,7 +58,7 @@
       
       $req = new PDO('mysql:host=localhost;dbname=mycave', 'root', '');
       
-      $stmt = $req->prepare("SELECT articles.name, articles.year, articles.grapes, articles.country, articles.region, articles.description, articles.picture FROM articles ORDER BY date_creation DESC LIMIT 1");
+      $stmt = $req->prepare("SELECT articles.id, articles.name, articles.year, articles.grapes, articles.country, articles.region, articles.description, articles.picture FROM articles ORDER BY date_creation DESC LIMIT 1");
       $stmt->execute();
       
       $resultat = $stmt->fetchAll();
@@ -66,8 +71,8 @@
         echo "<h3 class='card-region'>{$resultat[$i]['region']}, {$resultat[$i]['country']}</h3>";
         echo "<h3 class='card-description'>{$resultat[$i]['description']}</h3></div>";
         if(isset($_SESSION['id'])) {
-        echo "<div class='card-component-component'><div class=\"modif\"><button id=\"modif{.$i}\"><a href=\"./edit_article.php?id={$resultat[$i][0]}\">Modifier</a></button></div>";
-        echo "<div class=\"suppr\"><button id=\"suppr{.$i}\"><a href=\"./del_article.php?id={$resultat[$i][0]}\">Supprimer</a></button></div></div></div>";
+        echo "<div class='card-component-component'><div class=\"modif\"><button id=\"modif{.$i}\"><a href=\"./edit_article.php?id={$resultat[$i]['id']}\">Modifier</a></button></div>";
+        echo "<div class=\"suppr\"><button id=\"suppr{.$i}\"><a href=\"./del_article.php?id={$resultat[$i]['id']}\">Supprimer</a></button></div></div></div>";
         }
         $picture = (!$resultat[$i]['picture']) ? 'vide' : $resultat[$i]['picture'];
         echo "<div class='card-component'><div class=\"card-picture\" style=\"background-image: url($picture)\"></div></div>";

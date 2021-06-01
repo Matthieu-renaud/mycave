@@ -41,7 +41,7 @@
 
       $req = new PDO('mysql:host=localhost;dbname=mycave', 'root', '');
       
-      $stmt = $req->prepare("SELECT articles.name, articles.year, articles.grapes, articles.country, articles.region, articles.description, articles.picture FROM articles
+      $stmt = $req->prepare("SELECT articles.id, articles.name, articles.year, articles.grapes, articles.country, articles.region, articles.description, articles.picture FROM articles
       ORDER BY id");
       $stmt->execute();
       
@@ -54,8 +54,8 @@
         echo "<h3 class='card-grapes'>{$resultat[$i]['grapes']}</h3>";
         echo "<h3 class='card-region'>{$resultat[$i]['region']}, {$resultat[$i]['country']}</h3>";
         echo "<h3 class='card-description'>{$resultat[$i]['description']}</h3></div>";
-        echo "<div class='card-component-component'><div class=\"modif\"><button id=\"modif{.$i}\"><a href=\"./edit_article.php?id={$resultat[$i][0]}\">Modifier</a></button></div>";
-        echo "<div class=\"suppr\"><button id=\"suppr{.$i}\"><a href=\"./del_article.php?id={$resultat[$i][0]}\">Supprimer</a></button></div></div></div>";
+        echo "<div class='card-component-component'><div class=\"modif\"><button id=\"modif{.$i}\"><a href=\"./edit_article.php?id={$resultat[$i]['id']}\">Modifier</a></button></div>";
+        echo "<div class=\"suppr\"><button id=\"suppr{.$i}\"><a href=\"./del_article.php?id={$resultat[$i]['id']}\">Supprimer</a></button></div></div></div>";
         $picture = (!$resultat[$i]['picture']) ? 'vide' : $resultat[$i]['picture'];
         echo "<div class='card-component'><div class=\"card-picture\" style=\"background-image: url($picture)\"></div></div>";
         echo "</div>";

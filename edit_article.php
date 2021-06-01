@@ -40,7 +40,7 @@
 
   $req = new PDO('mysql:host=localhost;dbname=mycave', 'root', '');
         
-  $stmt = $req->prepare("SELECT name, contenu_article, category_id FROM article WHERE id=:id");
+  $stmt = $req->prepare("SELECT name, articles.year, grapes, country, region, description, picture FROM articles WHERE id=:id");
   $stmt->execute(array(
     'id' => $id
   ));
@@ -49,40 +49,46 @@
 
   ?>
 
-  <form action="./validation_edit_article.php" method="post">
-    <h1>Ce n'est pas un formulaire, c'est une création d'article,<br> je valide et je m'applique</h1>
+<form action="./validation_edit_article.php" method="post" enctype="multipart/form-data">
+    <h1>Ajout d'article</h1>
     <div class="form-container">
       <label for="nom">Nom</label>
-      <input class="input" type="text" name="nom" id="nom" value="<?php echo $res[0]['name'] ?>">
+      <input class="input" type="text" name="nom" id="nom" value="<?php echo $res[0]['name']; ?>">
     </div>
-    <div class="form-container">
-      <label id="textarea_label" for="contenu">Contenu</label>
-      <textarea name="contenu" id="contenu"><?php echo $res[0]['contenu_article'] ?></textarea>
-    </div>
-    <div class="form-container">
-      <label for="category">Catégorie</label>
-      <select id="category" name="category">
-        <?php
-        
-        $req = new PDO('mysql:host=localhost;dbname=mycave', 'root', '');
-      
-        $stmt = $req->prepare("SELECT name, id FROM category ORDER BY name");
-        $stmt->execute();
-        
-        $resultat = $stmt->fetchAll();
 
-        for ($i=0; $i < count($resultat); $i++) { 
-          echo "<option "; 
-          if ($resultat[$i]['id'] == $res[0]['category_id'])
-          echo "selected ";
-          echo "value=\"{$resultat[$i][1]}\">{$resultat[$i][0]}</option>";
-        }
-        
-        ?>
-        </select>
+    <div class="form-container">
+      <label for="year" id="year-label">Année</label>
+      <input class="input" type="number" name="year" id="year" min="1950" max="<?php echo date('Y') ?>" value="<?php echo $res[0]['year']; ?>">
     </div>
+
+    <div class="form-container">
+      <label for="grapes">Cépages</label>
+      <input class="input" type="text" name="grapes" id="grapes" value="<?php echo $res[0]['grapes']; ?>">
+    </div>
+
+    <div class="form-container">
+      <label for="region">Région</label>
+      <input class="input" type="text" name="region" id="region" value="<?php echo $res[0]['region']; ?>">
+    </div>
+    
+    <div class="form-container">
+      <label for="country">Pays</label>
+      <input class="input" type="text" name="country" id="country" value="<?php echo $res[0]['country']; ?>">
+    </div>
+    
+    <div class="form-container">
+      <label id="textarea_label" for="description">Description</label>
+      <textarea name="description" id="description"><?php echo $res[0]['description']; ?></textarea>
+    </div>
+    
+    <div class="form-container">
+      <label for="picture" id="picture-label">Image</label>
+      <input class="file" id="picture" name="picture" type="file" accept="image/png, image/jpeg" >
+    </div>
+    <input type="hidden" name="MAX_FILE_SIZE" value="30000" />
+
     <input type="hidden" name="id" id="id" value="<?php echo $id ?>">
-    <input type="submit" value="Validation avec Modification">
+    <input type="submit" value="Valider">
   </form>
   
 </body>

@@ -123,7 +123,7 @@
       echo "<h3 class=\"success\">L'image est valide</h3>";
       $fileBool = 1;
     } else if ($_FILES['picture']['error']==4){
-      echo "<h3 class=\"success\">Aucune image renseignée</h3>";
+      echo "<h3 class=\"error\">Aucune image renseignée</h3>";
     } else if ($_FILES['picture']['error']==1){
       echo "<h3 class=\"error\">L'image est trop lourde</h3>";
     } else {
