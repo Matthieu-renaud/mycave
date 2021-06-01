@@ -38,48 +38,68 @@
   <div class="alert-container">
     <?php
 
+
     $nom = htmlspecialchars($_POST['nom']);
     $nomLen = strlen($nom);
     $nomBool= false;
-    if (strlen($nom)<=5) {
+    if (strlen($nom)<=4) {
       echo "<h3 class=\"error\">Le nom est trop court : $nomLen caractères(s)</h3>";
     } else {
       $nomBool = true;
       echo "<h3 class=\"success\">Le nom est valide</h3>";
     }
-    
-    $contenu = htmlspecialchars($_POST['contenu']);
-    $contenuLen = strlen($contenu);
-    $contenuBool= false;
-    if (strlen($contenu)<=10) {
-      echo "<h3 class=\"error\">Le contenu est trop court : $contenuLen caractères(s)</h3>";
+
+    $year = htmlspecialchars($_POST['year']);
+    $yearBool= false;
+    if ($year<1950) {
+      echo "<h3 class=\"error\">L'année est invalide";
     } else {
-      $contenuBool = true;
-      echo "<h3 class=\"success\">Le contenu est valide</h3>";
-    }
-    
-    $category = ($_POST['category']);
-    $categoryBool= false;
-    if ($category<1) {
-      echo "<h3 class=\"error\">La categorie n'a pas été sélectionné</h3>";
-    } else {
-      $categoryBool = true;
-      echo "<h3 class=\"success\">La categorie est valide</h3>";
+      $yearBool = true;
+      echo "<h3 class=\"success\">L'année est valide</h3>";
     }
 
-    if($nomBool && $contenuBool && $categoryBool) {
-      
-      $req = new PDO('mysql:host=localhost;dbname=mycave', 'root', '');
-      $sth = $req->prepare('INSERT INTO article (name, contenu_article, category_id) VALUES(:name, :contenu, :category)');
-      
-      $sth->execute(array(
-        'name' => strip_tags($nom),
-        'contenu' => strip_tags($contenu),
-        'category' => strip_tags($category)
-      ));
-      
+    $grapes = htmlspecialchars($_POST['grapes']);
+    $grapesLen = strlen($grapes);
+    $grapesBool= false;
+    if (strlen($grapes)<=4) {
+      echo "<h3 class=\"error\">Le cépage est trop court : $grapesLen caractères(s)</h3>";
+    } else {
+      $grapesBool = true;
+      echo "<h3 class=\"success\">Le cépage est valide</h3>";
     }
-    
+
+    $region = htmlspecialchars($_POST['region']);
+    $regionLen = strlen($region);
+    $regionBool= false;
+    if (strlen($region)<=4) {
+      echo "<h3 class=\"error\">La région n'est pas valide</h3>";
+    } else {
+      $regionBool = true;
+      echo "<h3 class=\"success\">La région est valide</h3>";
+    }
+
+    $country = htmlspecialchars($_POST['country']);
+    $countryLen = strlen($country);
+    $countryBool= false;
+    if (strlen($country)<=3) {
+      echo "<h3 class=\"error\">Le pays est trop court : $countryLen caractères(s)</h3>";
+    } else {
+      $countryBool = true;
+      echo "<h3 class=\"success\">Le pays est valide</h3>";
+    }
+
+    $description = htmlspecialchars($_POST['description']);
+    $descriptionLen = strlen($description);
+    $descriptionBool= false;
+    if (strlen($description)<=0) {
+      echo "<h3 class=\"error\">La description est trop courte : $descriptionLen caractères(s)</h3>";
+    } else {
+      $descriptionBool = true;
+      echo "<h3 class=\"success\">La description est valide</h3>";
+    }
+
+
+
     function string2url($chaine) { 
       $chaine = trim($chaine); 
       $chaine = strtr($chaine, 
@@ -91,27 +111,45 @@
               $chaine = preg_replace('#-$#','',$chaine); 
               $chaine = preg_replace('#^-#','',$chaine); 
       return $chaine; 
-      }
+    }
 
+    $fileBool = 0;
+    $uploaddir = 'assets/img/bottles/';
+    if(!file_exists($uploaddir))    
+      mkdir($uploaddir);
+    $uploadfile = $uploaddir . basename(string2url($_FILES['picture']['name']));
+
+    if (move_uploaded_file($_FILES['picture']['tmp_name'], $uploadfile)) {
+      echo "<h3 class=\"success\">L'image est valide</h3>";
+      $fileBool = 1;
+    } else if ($_FILES['picture']['error']==4){
+      echo "<h3 class=\"success\">Aucune image renseignée</h3>";
+    } else if ($_FILES['picture']['error']==1){
+      echo "<h3 class=\"error\">L'image est trop lourde</h3>";
+    } else {
+      echo "<h3 class=\"error\">L'image n'a pas été téléchargée</h3>";
+    }
+
+
+    if($nomBool && $yearBool && $grapesBool && $regionBool && $countryBool && $descriptionBool && $fileBool) {
+      echo "<h2 class=\"success\">Tous les champs sont valides</h2>";
       
       $req = new PDO('mysql:host=localhost;dbname=mycave', 'root', '');
-      $cmd = $req->prepare('SELECT name, id, CONCAT(name, id) FROM tag');
-      $appel = $req->prepare('SELECT count(*) FROM tag');
+      $sth = $req->prepare('INSERT INTO articles (name, articles.year, grapes, country, region, description, picture) VALUES(:name, :annee, :grapes, :country, :region, :description, :picture)');
       
-      $cmd->execute();
-      $appel->execute();
+      $sth->execute(array(
+        'name' => strip_tags($nom),
+        'annee' => strip_tags($year),
+        'grapes' => strip_tags($grapes),
+        'country' => strip_tags($country),
+        'region' => strip_tags($region),
+        'description' => strip_tags($description),
+        'picture' => $uploadfile
+      ));
       
-      $res = $cmd->fetchAll();
-      $nbr = $appel->fetchAll();
-
-
-      print_r(!isset($_POST['exemple16']));
-      
-      for ($i=0; $i < $nbr[0][0]; $i++) { 
-        $idconcat = string2url($res[$i][2]);
-        if (isset($_POST[$idconcat]))
-        echo $idconcat;
-      }
+    } else {
+      echo "<h2 class=\"error\">Tous les champs ne sont pas valides</h2>";
+    }
 
     ?>
   </div>

@@ -65,8 +65,10 @@
         echo "<h3 class='card-grapes'>{$resultat[$i]['grapes']}</h3>";
         echo "<h3 class='card-region'>{$resultat[$i]['region']}, {$resultat[$i]['country']}</h3>";
         echo "<h3 class='card-description'>{$resultat[$i]['description']}</h3></div>";
+        if(isset($_SESSION['id'])) {
         echo "<div class='card-component-component'><div class=\"modif\"><button id=\"modif{.$i}\"><a href=\"./edit_article.php?id={$resultat[$i][0]}\">Modifier</a></button></div>";
         echo "<div class=\"suppr\"><button id=\"suppr{.$i}\"><a href=\"./del_article.php?id={$resultat[$i][0]}\">Supprimer</a></button></div></div></div>";
+        }
         $picture = (!$resultat[$i]['picture']) ? 'vide' : $resultat[$i]['picture'];
         echo "<div class='card-component'><div class=\"card-picture\" style=\"background-image: url($picture)\"></div></div>";
         echo "</div>";

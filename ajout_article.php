@@ -34,7 +34,7 @@
     </nav>
 </header>
 
-  <form action="./validation_ajout_article.php" method="post">
+  <form action="./validation_ajout_article.php" method="post" enctype="multipart/form-data">
     <h1>Ajout d'article</h1>
     <div class="form-container">
       <label for="nom">Nom</label>
@@ -42,31 +42,37 @@
     </div>
 
     <div class="form-container">
-      <label for="year">Année</label>
-      <input type="number" name="year" id="year" min="1950" max="<?php echo date('Y') ?>">
+      <label for="year" id="year-label">Année</label>
+      <input class="input" type="number" name="year" id="year" min="1950" max="<?php echo date('Y') ?>" value="<?php echo date('Y') ?>">
     </div>
 
     <div class="form-container">
       <label for="grapes">Cépages</label>
-      <input type="text" name="grapes" id="grapes">
+      <input class="input" type="text" name="grapes" id="grapes">
     </div>
 
     <div class="form-container">
       <label for="region">Région</label>
-      <input type="text" name="region" id="region">
+      <input class="input" type="text" name="region" id="region">
     </div>
     
     <div class="form-container">
       <label for="country">Pays</label>
-      <input type="text" name="country" id="country">
+      <input class="input" type="text" name="country" id="country">
     </div>
     
     <div class="form-container">
       <label id="textarea_label" for="description">Description</label>
       <textarea name="description" id="description" ></textarea>
     </div>
+    
+    <div class="form-container">
+      <label for="picture" id="picture-label">Image</label>
+      <input class="file" id="picture" name="picture" type="file" accept="image/png, image/jpeg">
+    </div>
+    <input type="hidden" name="MAX_FILE_SIZE" value="30000" />
 
-    <input type="submit" value="Validation avec Création d'Article">
+    <input type="submit" value="Valider">
   </form>
 
 </body>
