@@ -35,7 +35,9 @@
 </header>
 
   <main>
-    <div class="alert-container">
+    <div class="alert-container delete-this">
+    <section class="card-container">
+
       
       <div class="info">Vous avez sélectionné cette bouteille :</div>
       
@@ -56,20 +58,19 @@
     
       
       for ($i=0; $i < count($resultat); $i++) { 
-        echo "<div class='card'>";
+        echo "<div class='card no-marging'>";
         echo "<div class='card-component'><div class='card-component-component'><h3 class='card-name'>{$resultat[$i]['name']}</h3>";
         echo "<h3 class='card-year'><em>{$resultat[$i]['year']}</em></h3>";
         echo "<h3 class='card-grapes'>{$resultat[$i]['grapes']}</h3>";
         echo "<h3 class='card-region'>{$resultat[$i]['region']}, {$resultat[$i]['country']}</h3>";
         echo "<h3 class='card-description'>{$resultat[$i]['description']}</h3></div>";
-        echo "<div/>";
+        echo "</div>";
         $picture = (!$resultat[$i]['picture']) ? 'vide' : $resultat[$i]['picture'];
         echo "<div class='card-component'><div class=\"card-picture\" style=\"background-image: url($picture)\"></div></div>";
         echo "</div>";
       }
       ?>
 
-      <br>
 
       <form action="./validation_del_article.php" method="post">
           <input type="hidden" name="id" id="id" value="<?php echo $id ?>">
@@ -77,7 +78,8 @@
       </form>
 
     </div>
-    <button><a href="./aff_article.php">Retour à la liste</a></button>
+    </div>
+    <button><a href="./index.php">Retour à l'accueil</a></button>
   </main>
 
 </body>

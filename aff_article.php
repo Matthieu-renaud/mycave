@@ -36,6 +36,10 @@
 
 <main>
 
+  <div class="info info-bottle">
+      <h2>Liste de toutes les bouteilles</h2>
+    </div>
+
 <section class="card-container">
       <?php
 
@@ -54,8 +58,11 @@
         echo "<h3 class='card-grapes'>{$resultat[$i]['grapes']}</h3>";
         echo "<h3 class='card-region'>{$resultat[$i]['region']}, {$resultat[$i]['country']}</h3>";
         echo "<h3 class='card-description'>{$resultat[$i]['description']}</h3></div>";
+        if(isset($_SESSION['id'])) {
         echo "<div class='card-component-component'><div class=\"modif\"><button id=\"modif{.$i}\"><a href=\"./edit_article.php?id={$resultat[$i]['id']}\">Modifier</a></button></div>";
-        echo "<div class=\"suppr\"><button id=\"suppr{.$i}\"><a href=\"./del_article.php?id={$resultat[$i]['id']}\">Supprimer</a></button></div></div></div>";
+        echo "<div class=\"suppr\"><button id=\"suppr{.$i}\"><a href=\"./del_article.php?id={$resultat[$i]['id']}\">Supprimer</a></button></div></div>";
+        }
+        echo "</div>";
         $picture = (!$resultat[$i]['picture']) ? 'vide' : $resultat[$i]['picture'];
         echo "<div class='card-component'><div class=\"card-picture\" style=\"background-image: url($picture)\"></div></div>";
         echo "</div>";

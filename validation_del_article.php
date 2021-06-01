@@ -44,7 +44,7 @@
       echo "<h2 class=\"success\">Suppression réussie</h2>";
       
       $req = new PDO('mysql:host=localhost;dbname=mycave', 'root', '');
-      $sth = $req->prepare('DELETE FROM article WHERE id=:id');
+      $sth = $req->prepare('DELETE FROM articles WHERE id=:id');
 
       $sth->execute(array(
         'id' => $id
@@ -53,7 +53,7 @@
       ?>
 
     </div>
-  <button><a href="./aff_article.php">Retour à la liste</a></button>
+    <button><a href="./index.php">Retour à l'accueil</a></button>
   </main>
 
 </body>

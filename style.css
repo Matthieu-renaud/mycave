@@ -127,11 +127,15 @@ select,
   border: 1px solid var(--white);
 }
 
+.no-marging {
+  margin: auto;
+}
+
 .card-component:first-child {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: space-between;
+  justify-content: space-evenly;
   height: 400px;
 }
 
@@ -260,7 +264,11 @@ main {
   background-color: var(--danger);
 }
 
-#new-bottle {
-  margin-bottom: -45px;
+.info-bottle {
+  margin-bottom: -25px;
   background-color: var(--bordeaux);
+}
+
+.delete-this .card-name{  font-size: 2rem;
+
 }
