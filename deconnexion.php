@@ -9,7 +9,12 @@
 </head>
 <body>
   
-<?php session_start(); ?>
+<?php session_start();
+
+$_SESSION = array();
+session_destroy();
+
+?>
 <header>
     <nav>
       <ul class="group_menus">
@@ -38,12 +43,7 @@
 
 <div class="success">Vous êtes déconnecté.</div>
 
-<?php
 
-$_SESSION = array();
-session_destroy();
-
-?>
 
 
   <button><a href="./index.php">Retour à l'accueil</a></button>
