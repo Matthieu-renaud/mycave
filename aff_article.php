@@ -38,7 +38,7 @@
 <main>
 
   <div class="info info-bottle">
-      <h2>Liste de toutes les bouteilles</h2>
+      <h2>Liste des bouteilles</h2>
     </div>
 
 <section class="card-container">
