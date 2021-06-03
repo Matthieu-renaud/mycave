@@ -57,7 +57,7 @@
       
       $id = htmlspecialchars($_GET['id']);
 
-      $req = new PDO('mysql:host=localhost;dbname=mycave', 'root', '');
+      $req = new PDO('mysql:host=sql11.freemysqlhosting.net;dbname=sql11416774', 'sql11416774', 'pRSWkI6pSn');
             
       $stmt = $req->prepare("SELECT name, articles.year, grapes, country, region, description, picture FROM articles WHERE id=:id");
       $stmt->execute(array(

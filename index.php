@@ -57,7 +57,7 @@
 
       <?php
       
-      $req = new PDO('mysql:host=localhost;dbname=mycave', 'root', '');
+      $req = new PDO('mysql:host=sql11.freemysqlhosting.net;dbname=sql11416774', 'sql11416774', 'pRSWkI6pSn');
       
       $stmt = $req->prepare("SELECT articles.id, articles.name, articles.year, articles.grapes, articles.country, articles.region, articles.description, articles.picture FROM articles ORDER BY date_creation DESC LIMIT 1");
       $stmt->execute();

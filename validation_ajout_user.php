@@ -88,7 +88,7 @@
       echo "<h2 class=\"success\">Tous les champs sont valides</h2>";
       $mdpHash = password_hash($mdp, PASSWORD_DEFAULT);
       
-      $req = new PDO('mysql:host=localhost;dbname=mycave', 'root', '');
+      $req = new PDO('mysql:host=sql11.freemysqlhosting.net;dbname=sql11416774', 'sql11416774', 'pRSWkI6pSn');
       $sth = $req->prepare('INSERT INTO users (identifiant, mdp) VALUES(:id, :pwd)');
       
       $sth->execute(array(

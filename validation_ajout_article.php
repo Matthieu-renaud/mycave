@@ -144,7 +144,7 @@
     if($nomBool && $yearBool && $grapesBool && $regionBool && $countryBool && $descriptionBool && $fileBool) {
       echo "<h2 class=\"success\">Tous les champs sont valides</h2>";
       
-      $req = new PDO('mysql:host=localhost;dbname=mycave', 'root', '');
+      $req = new PDO('mysql:host=sql11.freemysqlhosting.net;dbname=sql11416774', 'sql11416774', 'pRSWkI6pSn');
       $sth = $req->prepare('INSERT INTO articles (name, articles.year, grapes, country, region, description, picture) VALUES(:name, :annee, :grapes, :country, :region, :description, :picture)');
       
       $sth->execute(array(

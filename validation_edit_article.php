@@ -143,7 +143,7 @@ if (move_uploaded_file($_FILES['picture']['tmp_name'], $uploadfile)) {
   echo "<h3 class=\"error\">L'image n'a pas été téléchargée</h3>";
 }
 
-$req = new PDO('mysql:host=localhost;dbname=mycave', 'root', '');
+$req = new PDO('mysql:host=sql11.freemysqlhosting.net;dbname=sql11416774', 'sql11416774', 'pRSWkI6pSn');
 
 if($nomBool && $yearBool && $grapesBool && $regionBool && $countryBool && $descriptionBool && $fileBool == 1) {
   echo "<h2 class=\"success\">Tous les champs sont valides</h2>";
@@ -165,7 +165,7 @@ if($nomBool && $yearBool && $grapesBool && $regionBool && $countryBool && $descr
   echo "<h2 class=\"success\">Tous les champs sont valides</h2>";
   
 
-  // $req = new PDO('mysql:host=localhost;dbname=mycave', 'root', '');
+  // $req = new PDO('mysql:host=sql11.freemysqlhosting.net;dbname=sql11416774', 'sql11416774', 'pRSWkI6pSn');
   $cmd = $req->prepare('UPDATE articles SET name = :nom, year = :annee, grapes = :grapes, country = :country, region = :region, description = :description WHERE id = :id');
   
   $cmd->execute(array(

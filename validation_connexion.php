@@ -43,7 +43,7 @@
 
   if(strlen($id)>4 && strlen($mdp)>6) {
         
-    $req = new PDO('mysql:host=localhost;dbname=mycave', 'root', '');
+    $req = new PDO('mysql:host=sql11.freemysqlhosting.net;dbname=sql11416774', 'sql11416774', 'pRSWkI6pSn');
     $sth = $req->prepare('SELECT mdp FROM users WHERE identifiant=:id');
     
     $sth->execute(array(
